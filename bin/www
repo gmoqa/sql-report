@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+/**
+ * sql-report
+ * @author Guillermo Quinteros <gu.quinteros@gmail.com>
+ */
+'use strict';
+
+const app = require('../app');
+const config = require('../config');
+const http = require('http');
+
+const server = http.createServer(app);
+
+server.listen(config.port, () => {
+	console.log(`Listening on port : ${config.port}`);
+});
