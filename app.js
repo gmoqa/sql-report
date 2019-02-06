@@ -7,21 +7,26 @@ const express =  require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const app = express();
-const config = require('./config');
 
-if (config.env === 'dev') {
+if (process.env.ENV === 'dev') {
     app.use(morgan('dev'));
-
+}
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-mongoose.(config.mongo, { useNewUrlParser: true });
+const options = { useNewUrlParser: true, useCreateIndex: true };
 
-
-mongoose.set('useCreateIndex', true);
+mongoose.connect(process.env.MONGO, options).then(
+    () => { console.log('Mongodb : connected'); },
+    err => { console.log(err) }
+);
 
 app.use('/v1/connections', require('./src/routes/connection.routes'));
+
+app.get('/boom', (req, res) => {
+    res.json({ message : 'message' });
+})
 
 app.get('/', (req, res) => {
     res.json({
@@ -31,7 +36,6 @@ app.get('/', (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-    console.log('HANDLED ERROR');
     if (err.isServer) {
         console.log(err);
     }

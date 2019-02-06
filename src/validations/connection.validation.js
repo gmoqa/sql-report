@@ -11,7 +11,7 @@ module.exports = {
             if (!req.value) { req.value = {}; }
             req.value['body'] = result.value;
             next();
-        }
+        };
     },
     schema: Joi.object().keys({
         type: Joi.string().valid(['mysql', 'pgsql', 'sqlite']).required(),
@@ -26,4 +26,4 @@ module.exports = {
         host: Joi.string(),
         name: Joi.string(),
     })
-}
+};

@@ -1,8 +1,9 @@
-module.exports = {
-    login : async(req, res, next ) => {
+const login = async() => {
+};
+const logout = async() => {
+};
 
-    },
-    logout : async(req, res, next ) => {
-        
-    }
-}
+module.exports = {
+    login,
+    logout
+};

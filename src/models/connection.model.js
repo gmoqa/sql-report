@@ -9,10 +9,10 @@ const connectionSchema = new Schema({
         required: true
     },
     ssh : {
-    	user : { type:String },
-    	host: { type: String },
-    	port : { type: Number },
-    	key: { type: String },
+        user : { type:String },
+        host: { type: String },
+        port : { type: Number },
+        key: { type: String },
     },
     database: { type:String },
     user: { type:String },

@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
-/**
- * sql-report
- * @author Guillermo Quinteros <gu.quinteros@gmail.com>
+/*
+ * This file is part of the SQL Report.
+ * (MIT) fenec #devs <https://www.fenec.cl>
+ * @author Guillermo Quinteros <gquinteros@fenec.cl>
  */
 'use strict';
 
 const app = require('../app');
-const config = require('../config');
 const http = require('http');
 
+const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
 
-server.listen(config.port, () => {
-	console.log(`Listening on port : ${config.port}`);
+server.listen(PORT, () => {
+	console.log(`Listening : ${PORT}`);
 });

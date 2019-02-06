@@ -1,11 +1,12 @@
-module.exports = {
-    create : async(req, res, next ) => {
+const create = async() => {
+};
+const update = async() => {
+};
+const remove = async() => {
+};
 
-    },
-    update : async(req, res, next ) => {
-        
-    },
-    delete : async(req, res, next ) => {
-        
-    }
-}
+module.exports = {
+    create,
+    update,
+    remove
+};

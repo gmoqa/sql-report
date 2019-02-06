@@ -1,14 +1,15 @@
-module.exports = {
-    create : async(req, res, next ) => {
+const create = async() => {
+};
+const update = async() => {
+};
+const remove = async() => {
+};
+const profile = async() => {
+};
 
-    },
-    update : async(req, res, next ) => {
-        
-    },
-    delete : async(req, res, next ) => {
-        
-    },
-    profile : async(req, res, next) => {
-        
-    }
-}
+module.exports = {
+    create,
+    update,
+    remove,
+    profile
+};
