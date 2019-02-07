@@ -1,9 +1,4 @@
-const login = async() => {
-};
-const logout = async() => {
-};
+const login = async() => {};
+const logout = async() => {};
 
-module.exports = {
-    login,
-    logout
-};
+module.exports = { login, logout };

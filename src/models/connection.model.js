@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const paginate = require('mongoose-paginate-v2');
 const Schema = mongoose.Schema;
 
 const connectionSchema = new Schema({
@@ -22,8 +21,6 @@ const connectionSchema = new Schema({
     name: { type: String },
     created: { type: Date, default: Date.now }
 });
-
-connectionSchema.plugin(paginate);
 
 const Connection = mongoose.model('Connection', connectionSchema);
 

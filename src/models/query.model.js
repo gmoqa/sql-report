@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const paginate = require('mongoose-paginate-v2');
 const Schema = mongoose.Schema;
 
 const querySchema = new Schema({
@@ -11,8 +10,6 @@ const querySchema = new Schema({
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
-
-querySchema.plugin(paginate);
 
 const Query = mongoose.model('Query', querySchema);
 
