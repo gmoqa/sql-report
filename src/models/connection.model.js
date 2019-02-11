@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const connectionSchema = new Schema({
     type: {
@@ -20,8 +20,8 @@ const connectionSchema = new Schema({
     slug: { type: String },
     name: { type: String },
     created: { type: Date, default: Date.now }
-});
+})
 
-const Connection = mongoose.model('Connection', connectionSchema);
+const Connection = mongoose.model('Connection', connectionSchema)
 
-module.exports = Connection;
+module.exports = Connection

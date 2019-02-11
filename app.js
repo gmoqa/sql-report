@@ -1,33 +1,33 @@
-/**
- * sql-report
- * @author Guillermo Quinteros <gu.quinteros@gmail.com>
+/*
+ * This file is part of the SQLReport
+ *
+ * (c) fenec #devs <https://www.fenec.cl>
+ * All rights reserved. No warranty, explicit or implicit, provided.
+ *
  */
-require('dotenv').config();
+require('dotenv').config()
+const express =  require('express')
+const mongoose = require('mongoose')
+const parser = require('body-parser')
+const morgan = require('morgan')
 
-const express =  require('express');
-const mongoose = require('mongoose');
-const parser = require('body-parser');
-const morgan = require('morgan');
+const app = express()
 
-const app = express();
+app.use(morgan('dev'))
+app.use(parser.json())
 
-app.use(morgan('dev'));
-app.use(parser.json());
+const options = {
+    useNewUrlParser: true,
+    useCreateIndex: true
+}
 
-mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useCreateIndex: true }).then(
-    () => { console.log('Mongodb : connected'); },
-    err => { console.log(err); }
-);
+mongoose.connect(process.env.MONGO, options ).then(
+    () => { console.log('Mongodb : connected') },
+    err => { console.log(err) }
+)
 
-app.use('/v1/connections', require('./src/routes/connection.routes'));
+app.use('/', require('./src/routes/security.routes'))
+app.use('/', require('./src/controllers/default.controller'))
+app.use('/connections', require('./src/routes/connection.routes'))
 
-app.get('/', (req, res) => {
-    res.json({ message : 'Welcome to SQL Report API' });
-});
-
-app.use((err, req, res) => {
-    if (err.isServer) console.log(err);
-    res.status(err.output.statusCode).json(err.output.payload);
-});
-
-module.exports = app;
+module.exports = app

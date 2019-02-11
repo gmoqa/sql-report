@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const querySchema = new Schema({
     name: { type:String },
@@ -9,8 +9,8 @@ const querySchema = new Schema({
     connection: { type: Schema.Types.ObjectId, ref: 'Connection' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
-});
+})
 
-const Query = mongoose.model('Query', querySchema);
+const Query = mongoose.model('Query', querySchema)
 
-module.exports = Query;
+module.exports = Query

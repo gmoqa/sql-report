@@ -1,11 +1,10 @@
-const router = require('express').Router();
-const controller = require('../controllers/connection.controller');
-const { validate, schema } = require('../validations/validator');
+const router = require('express').Router()
+const controller = require('../controllers/connection.controller')
 
-router.get('/', controller.all);
-router.get('/:id', controller.get);
-router.delete('/:id', controller.delete);
-router.post('/', validate(schema), controller.create);
-router.patch('/:id', controller.patch);
+router.get('/', controller.all)
+router.get('/:id', controller.get)
+router.delete('/:id', controller.remove)
+router.post('/', controller.create)
+router.patch('/:id', controller.update)
 
-module.exports = router;
+module.exports = router
