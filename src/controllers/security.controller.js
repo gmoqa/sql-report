@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const User = require('../models/user.model')
 
-register = async (req, res) => {
+const register = async (req, res) => {
     const { username, email, password } = req.body
 
     const foundUser = await User.findOne({ email })

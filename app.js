@@ -3,6 +3,7 @@
  *
  * (c) fenec #devs <https://www.fenec.cl>
  * All rights reserved. No warranty, explicit or implicit, provided.
+ * @author Guillermo Quinteros <gu.quinteros@gmail.com>
  *
  */
 require('dotenv').config()
