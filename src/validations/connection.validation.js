@@ -1,16 +1,18 @@
 const Joi = require('joi')
 
-const validate = (schema) => {
-    return (req, res, next) => {
-        const result = Joi.validate(req.body, schema)
-        if (result.error) {
-            return res.status(400).json(result.error)
-        }
+const connection = Joi.object().keys({
+    type : Joi.string().required(),
+    ssh : Joi.object({
+        user : Joi.string().required(),
+        host : Joi.string().required(),
+        port : Joi.string().required(),
+        key : Joi.string().required()
+    }).optional(),
+    database : Joi.string().required(),
+    user : Joi.string().required(),
+    password : Joi.string().required(),
+    host : Joi.string().required(),
+    name : Joi.string().required()
+})
 
-        if (!req.value) { req.value = {} }
-        req.value['body'] = result.value
-        next()
-    }
-}
-
-module.exports = validate
+module.exports = connection

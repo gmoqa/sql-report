@@ -1,22 +1,23 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const User = require('../models/user.model')
+const mailer = require('../utils/mailer.util')
 
 const register = async (req, res) => {
-    const { username, email, password } = req.body
+    const { name, lastName, email, password } = req.body
+    const exists = await User.findOne({ email })
+    if (exists) res.status(403).send({ error: 'Email is already in use' })
 
-    const foundUser = await User.findOne({ email })
-
-    if (foundUser) {
-        return res.status(403).send({ error: 'Email is already in use' })
-    }
-
+    const token = require('crypto').randomBytes(16).toString('hex')
     const user = new User({
-        username : username,
+        name : name,
+        lastName : lastName,
         email : email,
+        token : token,
         password : bcrypt.hashSync(password, 8)
     })
     await user.save()
+    await mailer.sendActivationEmail(email, token)
     res.status(201).end()
 }
 
